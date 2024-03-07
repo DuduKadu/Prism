@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhyisi3re4riv"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/world.gd" id="1_vk0fp"]
+[ext_resource type="PackedScene" uid="uid://2xrvjm150a0t" path="res://Scenes/Actors/player.tscn" id="2_pe0e8"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_vk0fp")
+
+[node name="Player" parent="." instance=ExtResource("2_pe0e8")]
+position = Vector2(68, 422)
+floor_constant_speed = true
+floor_snap_length = 3.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-1, 231, 33, 231, 33, 507, 106, 512, 166, 545, 299, 540, 360, 503, 419, 505, 468, 545, 568, 547, 614, 505, 763, 483, 834, 436, 962, 438, 1024, 480, 1112, 486, 1112, 249, 1148, 250, 1153, 647, -3, 645)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
+polygon = PackedVector2Array(121, 256, 121, 473, 155, 471, 151, 253)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D2/CollisionPolygon2D"]
