@@ -6,3 +6,5 @@ extends CharacterBody2D
 func apply_gravity(gravity, gravity_force, delta) -> void:
 	velocity.y += gravity * gravity_force * delta
 
+func take_damage() -> void:
+	pass

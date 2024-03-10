@@ -1,26 +1,48 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhyisi3re4riv"]
+[gd_scene load_steps=5 format=3 uid="uid://bhyisi3re4riv"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/world.gd" id="1_vk0fp"]
 [ext_resource type="PackedScene" uid="uid://2xrvjm150a0t" path="res://Scenes/Actors/player.tscn" id="2_pe0e8"]
+[ext_resource type="PackedScene" uid="uid://81xa40qniuno" path="res://Scenes/Actors/Enemies/goomba.tscn" id="3_imsde"]
+[ext_resource type="PackedScene" uid="uid://csri0m4m0lqdp" path="res://Scenes/Actors/Enemies/brute.tscn" id="4_7ksqj"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_vk0fp")
 
 [node name="Player" parent="." instance=ExtResource("2_pe0e8")]
-position = Vector2(68, 422)
+position = Vector2(551, 799)
 floor_constant_speed = true
 floor_snap_length = 3.0
 
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
+metadata/_edit_lock_ = true
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(-1, 231, 33, 231, 33, 507, 106, 512, 166, 545, 299, 540, 360, 503, 419, 505, 468, 545, 568, 547, 614, 505, 763, 483, 834, 436, 962, 438, 1024, 480, 1112, 486, 1112, 249, 1148, 250, 1153, 647, -3, 645)
+position = Vector2(-1, 0)
+polygon = PackedVector2Array(3, 865, -8, 1063, 1915, 1075, 1915, 865, 1434, 887, 1368, 432, 1338, 432, 1360, 642, 1134, 647, 1124.79, 782.849, 1054, 791, 1048.22, 870.884, 804, 821, 636, 822, 536, 883, 144, 882, 139, 441, 14, 435)
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
-polygon = PackedVector2Array(121, 256, 121, 473, 155, 471, 151, 253)
+position = Vector2(468, 29)
+polygon = PackedVector2Array(360, 289, 374, 674, 461, 699, 444, 292)
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D2/CollisionPolygon2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(551, 799)
+metadata/_edit_lock_ = true
+
+[node name="Goomba" parent="." instance=ExtResource("3_imsde")]
+position = Vector2(1226, 645)
+
+[node name="Brute" parent="." instance=ExtResource("4_7ksqj")]
+position = Vector2(706, 821)

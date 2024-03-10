@@ -3,7 +3,7 @@ extends Actor
 var jump_count: int = 0
 var can_jump: bool = true
 
-const max_jump: int = 300
+const max_jump: int = 500
 
 @onready var sprite_2d = $Sprite2D
 
@@ -36,11 +36,11 @@ func _physics_process(delta):
 	move_and_slide()
 
 func flip_direction(direction, wall) -> void:
-	if direction > 0:
+	if direction < 0:
 		sprite_2d.flip_h = true
 		if is_on_wall_only():
 			sprite_2d.flip_h = false
-	elif direction < 0:
+	elif direction > 0:
 		sprite_2d. flip_h = false
 		if is_on_wall_only(): 
 			sprite_2d.flip_h = true
